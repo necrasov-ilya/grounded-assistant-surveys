@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Опрос | Grounded Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-glow page-glow-left"></div>
+  <div class="page-glow page-glow-right"></div>
+
+  <main class="shell">
+    <section class="survey-card" aria-live="polite">
+      <img class="brand" src="logo.svg" alt="Логотип Grounded Assistant" draggable="false">
+
+      <div class="hero" id="hero">
+        <p class="eyebrow">Анонимный опрос</p>
+        <h1>Как вам удобнее получать ответы и разбираться с информацией?</h1>
+        <p class="intro">
+          Мы изучаем, как людям удобнее искать ответы, понимать материалы и пользоваться цифровыми помощниками.
+          Опрос короткий и анонимный, займет 3-4 минуты.
+        </p>
+        <button class="primary-button" id="startButton" type="button">Начать</button>
+      </div>
+
+      <form class="survey hidden" id="surveyForm" novalidate>
+        <div class="topbar">
+          <span class="progress-text" id="progressText">Вопрос 1 из 12</span>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <section class="question-frame" id="questionFrame"></section>
+
+        <div class="actions">
+          <button class="ghost-button hidden" id="backButton" type="button">Назад</button>
+          <button class="primary-button" id="nextButton" type="submit">Далее</button>
+        </div>
+      </form>
+
+      <section class="complete hidden" id="completeState">
+        <p class="eyebrow">Спасибо</p>
+        <h2>Ответ отправлен</h2>
+        <p>
+          Ваши ответы сохранены. Если захотите, можно пройти опрос еще раз с другим набором ответов.
+        </p>
+        <button class="primary-button" id="restartButton" type="button">Пройти снова</button>
+      </section>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
