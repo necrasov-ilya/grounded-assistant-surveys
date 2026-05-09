@@ -67,7 +67,7 @@ textarea {
 
 .survey-card {
   width: min(100%, 760px);
-  min-height: 680px;
+  min-height: 500px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -95,7 +95,11 @@ textarea {
 .hero,
 .complete {
   justify-content: center;
-  min-height: 560px;
+  min-height: 360px;
+}
+
+.hero {
+  justify-content: flex-start;
 }
 
 .hidden {
@@ -103,7 +107,7 @@ textarea {
 }
 
 .eyebrow {
-  margin: 0 0 12px;
+  margin: 22px 0 12px;
   color: var(--accent);
   font-size: 0.85rem;
   font-weight: 700;
@@ -114,31 +118,50 @@ textarea {
 h1,
 h2 {
   margin: 0;
-  max-width: 12ch;
+  max-width: 11ch;
   line-height: 0.98;
   font-weight: 700;
   letter-spacing: -0.04em;
 }
 
 h1 {
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-size: clamp(1.6rem, 3.4vw, 2.7rem);
+  max-width: 20ch;
 }
 
 h2 {
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-size: clamp(2.55rem, 5vw, 4rem);
 }
 
 .intro,
 .complete p {
   max-width: 42rem;
-  margin: 24px 0 0;
+  margin: 18px 0 0;
   color: var(--muted);
   line-height: 1.7;
   font-size: 1.04rem;
 }
 
 .hero .primary-button {
-  margin-top: 36px;
+  margin-top: auto;
+  align-self: stretch;
+  width: 100%;
+}
+
+.complete {
+  align-items: flex-start;
+}
+
+.celebration-mark {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.24), rgba(138, 43, 226, 0.08));
+  box-shadow: inset 0 0 0 1px rgba(138, 43, 226, 0.16);
+  font-size: 2.1rem;
 }
 
 .survey {
@@ -218,10 +241,10 @@ h2 {
 
 .question-title {
   margin: 0;
-  max-width: 18ch;
-  font-size: clamp(1.55rem, 3.4vw, 2.5rem);
+  max-width: 20ch;
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
   letter-spacing: -0.04em;
-  line-height: 1.05;
+  line-height: 1.08;
 }
 
 .options {
@@ -372,21 +395,74 @@ h2 {
 @media (max-width: 720px) {
   .survey-card {
     min-height: auto;
-    padding: 24px 20px 20px;
-    border-radius: 28px;
+    padding: 20px 16px 16px;
+    border-radius: 24px;
   }
 
   .brand {
-    width: 120px;
+    width: 112px;
   }
 
   .hero,
   .complete {
-    min-height: 500px;
+    min-height: auto;
+  }
+
+  h1,
+  h2 {
+    max-width: none;
+  }
+
+  h1 {
+    font-size: clamp(1.42rem, 5.8vw, 1.9rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+
+  .intro,
+  .complete p {
+    margin-top: 18px;
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .hero .primary-button {
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  .survey {
+    gap: 18px;
+    margin-top: 20px;
+  }
+
+  .question-frame {
+    min-height: auto;
   }
 
   .question-title {
     max-width: none;
+    font-size: clamp(1.28rem, 5.6vw, 1.55rem);
+    line-height: 1.14;
+    letter-spacing: -0.03em;
+  }
+
+  .question-card {
+    gap: 22px;
+  }
+
+  .option-label {
+    padding: 15px 16px;
+    gap: 12px;
+    border-radius: 18px;
+    font-size: 0.96rem;
+    line-height: 1.35;
+  }
+
+  .textarea {
+    min-height: 132px;
+    padding: 16px 16px;
+    border-radius: 20px;
   }
 
   .actions {

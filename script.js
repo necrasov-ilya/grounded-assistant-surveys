@@ -164,7 +164,6 @@ const nextButton = document.getElementById("nextButton");
 const backButton = document.getElementById("backButton");
 const completeState = document.getElementById("completeState");
 const startButton = document.getElementById("startButton");
-const restartButton = document.getElementById("restartButton");
 
 questionFrame.addEventListener("change", (event) => {
   const question = getCurrentQuestion();
@@ -195,15 +194,6 @@ function startSurvey() {
   completeState.classList.add("hidden");
   surveyForm.classList.remove("hidden");
   renderQuestion();
-}
-
-function restartSurvey() {
-  state.currentIndex = 0;
-  state.answers = {};
-  state.isSubmitting = false;
-  nextButton.disabled = false;
-  nextButton.textContent = "Далее";
-  startSurvey();
 }
 
 function getCurrentQuestion() {
@@ -387,7 +377,6 @@ function handleBack() {
 }
 
 startButton.addEventListener("click", startSurvey);
-restartButton.addEventListener("click", restartSurvey);
 backButton.addEventListener("click", handleBack);
 surveyForm.addEventListener("submit", handleNext);
 
