@@ -13,7 +13,7 @@ const questions = [
   },
   {
     id: "ai_usage_goal",
-    title: "Для чего вы обычно используете нейросети или похожие сервисы?",
+    title: "Для чего вы чаще всего используете нейросети или похожие сервисы?",
     type: "single",
     options: [
       "Объяснить сложную тему",
@@ -38,7 +38,7 @@ const questions = [
   },
   {
     id: "best_answer_priority",
-    title: "Что для вас важнее всего в хорошем ответе?",
+    title: "Что для вас самое главное в хорошем ответе?",
     type: "single",
     options: [
       "Чтобы был точным",
@@ -51,7 +51,7 @@ const questions = [
   },
   {
     id: "assistant_irritation",
-    title: "Что чаще всего раздражает в нейросетях или цифровых помощниках?",
+    title: "Что вас чаще всего раздражает в нейросетях или цифровых помощниках?",
     type: "single",
     options: [
       "Отвечают слишком общо",
@@ -88,7 +88,7 @@ const questions = [
   },
   {
     id: "materials_pain",
-    title: "Что в таких материалах обычно неудобно?",
+    title: "Что в таких материалах обычно неудобнее всего?",
     type: "single",
     options: [
       "Слишком много текста",
@@ -101,7 +101,7 @@ const questions = [
   },
   {
     id: "trust_factor",
-    title: "Если сервис отвечает на ваш вопрос, что повысит ваше доверие?",
+    title: "Если сервис отвечает на ваш вопрос, что больше всего повысит ваше доверие?",
     type: "single",
     options: [
       "Он показывает источник",
@@ -114,7 +114,7 @@ const questions = [
   },
   {
     id: "use_case",
-    title: "В каких ситуациях такой помощник был бы полезен?",
+    title: "В каких ситуациях такой помощник был бы полезнее всего?",
     type: "single",
     options: [
       "Быстро понять тему",
@@ -232,6 +232,7 @@ function renderQuestion() {
         <div class="error" id="errorText"></div>
       </article>
     `;
+    fitQuestionTitle();
     return;
   }
 
@@ -254,6 +255,7 @@ function renderQuestion() {
       <div class="error" id="errorText"></div>
     </article>
   `;
+  fitQuestionTitle();
 }
 
 function escapeHtml(value) {
@@ -298,6 +300,31 @@ function goToNextQuestion() {
   window.setTimeout(() => {
     state.isTransitioning = false;
   }, 120);
+}
+
+function fitQuestionTitle() {
+  const title = questionFrame.querySelector(".question-title");
+  if (!title) {
+    return;
+  }
+
+  title.style.fontSize = "";
+
+  window.requestAnimationFrame(() => {
+    const computed = window.getComputedStyle(title);
+    const lineHeight = parseFloat(computed.lineHeight);
+    if (!lineHeight) {
+      return;
+    }
+
+    const maxHeight = lineHeight * 3.15;
+    let size = parseFloat(computed.fontSize);
+
+    while (title.offsetHeight > maxHeight && size > 16) {
+      size -= 0.5;
+      title.style.fontSize = `${size}px`;
+    }
+  });
 }
 
 async function submitSurvey() {
@@ -368,6 +395,7 @@ async function handleNext(event) {
 
 startButton.addEventListener("click", startSurvey);
 surveyForm.addEventListener("submit", handleNext);
+window.addEventListener("resize", fitQuestionTitle);
 
 questionFrame.addEventListener("input", (event) => {
   const question = getCurrentQuestion();

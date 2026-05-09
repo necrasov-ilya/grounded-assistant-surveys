@@ -223,6 +223,7 @@ h2 {
 .question-heading {
   display: grid;
   gap: 10px;
+  width: min(75%, 100%);
 }
 
 .question-index {
@@ -235,7 +236,7 @@ h2 {
 
 .question-title {
   margin: 0;
-  max-width: 20ch;
+  max-width: none;
   font-size: clamp(1.45rem, 3vw, 2.2rem);
   letter-spacing: -0.04em;
   line-height: 1.08;
