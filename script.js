@@ -161,7 +161,6 @@ const questionFrame = document.getElementById("questionFrame");
 const progressText = document.getElementById("progressText");
 const progressBar = document.getElementById("progressBar");
 const nextButton = document.getElementById("nextButton");
-const backButton = document.getElementById("backButton");
 const completeState = document.getElementById("completeState");
 const startButton = document.getElementById("startButton");
 
@@ -208,7 +207,6 @@ function renderQuestion() {
 
   progressText.textContent = `Вопрос ${state.currentIndex + 1} из ${questions.length}`;
   progressBar.style.width = `${((state.currentIndex + 1) / questions.length) * 100}%`;
-  backButton.classList.toggle("hidden", state.currentIndex === 0);
   nextButton.classList.toggle("hidden", question.type === "single");
 
   if (question.type === "single") {
@@ -368,16 +366,7 @@ async function handleNext(event) {
   }
 }
 
-function handleBack() {
-  if (state.currentIndex === 0 || state.isSubmitting || state.isTransitioning) {
-    return;
-  }
-  state.currentIndex -= 1;
-  renderQuestion();
-}
-
 startButton.addEventListener("click", startSurvey);
-backButton.addEventListener("click", handleBack);
 surveyForm.addEventListener("submit", handleNext);
 
 questionFrame.addEventListener("input", (event) => {

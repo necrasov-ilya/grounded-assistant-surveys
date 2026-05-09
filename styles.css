@@ -340,7 +340,7 @@ h2 {
 
 .actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 16px;
   margin-top: auto;
 }
@@ -463,11 +463,6 @@ h2 {
     min-height: 132px;
     padding: 16px 16px;
     border-radius: 20px;
-  }
-
-  .actions {
-    flex-direction: column-reverse;
-    align-items: stretch;
   }
 
   .primary-button,
